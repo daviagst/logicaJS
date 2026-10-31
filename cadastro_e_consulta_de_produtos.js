@@ -36,7 +36,20 @@ const cadastrarProduto = (nome, preco, qtd) => {
     return produtos
 }
 
-cadastrarProduto("teclado", 20, 3)
-cadastrarProduto("mouse", 0, 3)
-cadastrarProduto("monitor", 10, 0)
-console.log(produtos)
+const acessarProduto = (produtos, id) => {
+    return produtos[id]
+}
+
+const valorEstoque = (produtos) => {
+    let valorTotal = 0
+    for(let i = 0; i < produtos.length; i++){
+        valorTotal = produtos["preço"] * produtos.quantidade
+    }
+    return valorTotal
+}
+
+cadastrarProduto("teclado", 10, 3)
+cadastrarProduto("mouse", 5, 4)
+
+console.log(acessarProduto(produtos, 0))
+console.log(valorEstoque(produtos))
