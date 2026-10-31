@@ -37,13 +37,18 @@ const cadastrarProduto = (nome, preco, qtd) => {
 }
 
 const acessarProduto = (produtos, id) => {
-    return produtos[id]
+    const produtoEscolhido = produtos.find(prod => prod.id === id)
+
+    if(produtoEscolhido === undefined){
+        return "Produto não encontrado"
+    }
+    return produtoEscolhido
 }
 
 const valorEstoque = (produtos) => {
     let valorTotal = 0
     for(let i = 0; i < produtos.length; i++){
-        valorTotal = produtos["preço"] * produtos.quantidade
+        valorTotal +=  produtos[i]["preço"] * produtos[i].quantidade
     }
     return valorTotal
 }
@@ -51,5 +56,10 @@ const valorEstoque = (produtos) => {
 cadastrarProduto("teclado", 10, 3)
 cadastrarProduto("mouse", 5, 4)
 
-console.log(acessarProduto(produtos, 0))
+console.log(acessarProduto(produtos, 3))
 console.log(valorEstoque(produtos))
+if(produtos.length == 0){
+    console.log("A lista esta vazia")
+}else{
+    console.log(produtos)
+}
