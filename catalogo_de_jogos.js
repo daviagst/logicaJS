@@ -8,16 +8,27 @@ const jogos = [
 ];
 
 const jogosDisponiveis = (jogos) => {
-    return jogos.filter(jogo => jogo.disponivel === true)
+    return jogos.filter(jogo => jogo.disponivel)
 }
 
 const nomeDosJogos = (jogos) => {
-    const nomes = []
-    for(let i = 0; i < jogos.length; i++){
-        nomes.push(jogos[i].nome)
-    }
-    console.log(nomes)
+    return jogos.map((jogo) => jogo.nome)
 }
 
+const valorTotal = (jogos) => {
+    const soma = jogos.reduce((total, valor) =>  {
+        return total + valor.preco
+    },0)
+    return soma
+}
+
+const melhoresJogos = (jogos) => {
+    return jogos.filter(jogo => jogo.nota >= 9.5)
+}
+
+
+
 console.log(jogosDisponiveis(jogos))
-nomeDosJogos(jogos)
+console.log(nomeDosJogos(jogos))
+console.log(valorTotal(jogos))
+console.log(melhoresJogos(jogos))
