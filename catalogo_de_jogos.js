@@ -26,9 +26,46 @@ const melhoresJogos = (jogos) => {
     return jogos.filter(jogo => jogo.nota >= 9.5)
 }
 
+const resumoCatalogo = (jogos) => {
+
+    let totalJogos = jogos.length
 
 
-console.log(jogosDisponiveis(jogos))
-console.log(nomeDosJogos(jogos))
-console.log(valorTotal(jogos))
-console.log(melhoresJogos(jogos))
+    let totalDisponivel = 0
+    jogos.forEach(jogo => {
+        if(jogo.disponivel){
+            totalDisponivel += 1
+        }
+    });
+
+    const soma = jogos.reduce((total, valor) => {
+        return total + valor.nota
+    }, 0)
+
+    const mediaNota = jogos.length > 0 ? soma/jogos.length : 0
+
+    let jogoCaro = null
+    let maior = 0
+    jogos.forEach(jogo => {
+        if(jogo.preco > maior){
+            maior = jogo.preco
+            jogoCaro = jogo.nome
+        }
+    })
+
+    
+
+
+    return {
+        totalJogos: totalJogos,
+        disponiveis: totalDisponivel,
+        mediaNotas: parseFloat(mediaNota.toFixed(2)),
+        jogoMaisCaro: jogoCaro
+    }
+
+
+}
+
+
+
+console.log(resumoCatalogo(jogos))
