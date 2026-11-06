@@ -53,18 +53,14 @@ const resumoCatalogo = (jogos) => {
         }
     })
 
-    
-
-
     return {
         totalJogos: totalJogos,
         disponiveis: totalDisponivel,
         mediaNotas: parseFloat(mediaNota.toFixed(2)),
         jogoMaisCaro: jogoCaro
     }
-
-
 }
+
 
 
 
